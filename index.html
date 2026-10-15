@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beta Matrix Terminal</title>
+    <style>
+        body {
+            background-color: #050507;
+            color: #007aff;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .matrix-box {
+            width: 100%;
+            max-width: 850px;
+            background-color: #0a0a0f;
+            border: 2px solid #007aff;
+            border-radius: 6px;
+            padding: 25px;
+            box-shadow: 0 0 30px rgba(0, 122, 255, 0.2);
+            text-align: left;
+        }
+        h1 {
+            font-size: 2em;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px dashed #007aff;
+            padding-bottom: 10px;
+        }
+        .status-line {
+            color: #8e8e93;
+            font-size: 0.9em;
+            margin-bottom: 25px;
+        }
+        .terminal-stream {
+            background-color: #000000;
+            border: 1px solid #1c1c1e;
+            padding: 15px;
+            height: 180px;
+            overflow-y: auto;
+            color: #30d158;
+            font-size: 0.85em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: #121218;
+            border: 1px solid #2c2c2e;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        .card:hover {
+            border-color: #007aff;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #ffffff;
+            font-size: 1.1em;
+        }
+        .card p {
+            color: #aeaeae;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+        .action-link {
+            display: block;
+            text-align: center;
+            background-color: #007aff;
+            color: #000000;
+            padding: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+        .action-link:hover {
+            background-color: #1f8fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="matrix-box">
+    <h1>🌀 Beta Environment: Hub Site Alpha</h1>
+    <div class="status-line">Core Status: Online // Active Repository Connection Verified</div>
+
+    <!-- Active Loading Log Stream -->
+    <div class="terminal-stream" id="termStream">
+        [LAUNCH] Initializing independent web environment...<br>
+        [DOM] Security layer loaded. Routing matrix stabilized.<br>
+        [CONNECT] Active channel opened for nppsdmathcards...
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Module 01: Chat Test</h3>
+            <p>Deploy experimental command layouts and message buffer checks safely.</p>
+            <a href="#" class="action-link">Run Sandbox</a>
+        </div>
+        <div class="card">
+            <h3>Module 02: Fallback Mirrors</h3>
+            <p>Verify advanced redirection tokens to circumvent filter restrictions.</p>
+            <a href="#" class="action-link">Verify Assets</a>
+        </div>
+        <div class="card">
+            <h3>Module 03: Local Ledger</h3>
+            <p>Draft structural frameworks for secure employee balance configurations.</p>
+            <a href="#" class="action-link">Launch Arrays</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const stream = document.getElementById('termStream');
+    const systemLogs = [
+        "[INFO] Clearing local variable cache directories...",
+        "[STEALTH] Cloaking network request parameters successfully.",
+        "[STANDBY] Waiting for local execution prompt inputs..."
+    ];
+    let currentLog = 0;
+
+    function pushLog() {
+        if (currentLog < systemLogs.length) {
+            stream.innerHTML += `<br>${systemLogs[currentLog]}`;
+            stream.scrollTop = stream.scrollHeight;
+            currentLog++;
+            setTimeout(pushLog, 2000);
+        }
+    }
+    setTimeout(pushLog, 1500);
+</script>
+
+</body>
+</html>
