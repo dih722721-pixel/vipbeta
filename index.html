@@ -91,6 +91,8 @@
             margin-bottom: 10px;
             font-weight: bold;
         }
+        .badge.backup { background-color: #30d158; }
+        .badge.mc { background-color: #30d158; color: black; }
     </style>
 </head>
 <body>
@@ -100,34 +102,35 @@
     <div class="status-line">Environment Matrix: Sandbox Active // Testing Tier Only</div>
 
     <div class="grid">
-        <!-- Beta App 1 -->
+        <!-- Beta App 1: Fixed Minecraft Script Code -->
         <div class="card">
             <div>
-                <span class="badge">BETA TEST</span>
-                <h3>Custom Secure Console</h3>
-                <p>Testing the hidden terminal system configurations (AICHAT, CALCAPP, MEMOPAD routing features).</p>
+                <span class="badge mc">MINECRAFT CLASSIC</span>
+                <h3>Stealth Window Injector</h3>
+                <p>Launches an encrypted iframe container overlay with a fixed, higher-priority layer killswitch button overlay.</p>
             </div>
-            <a href="#" class="action-link">Launch Test Frame</a>
+            <!-- Injected with the functional, elevated button patch parameters -->
+            <a href="javascript:(function(){var frame = document.createElement('iframe'); frame.src='https://classic.minecraft.net/'; frame.style.position='fixed'; frame.style.top='5%'; frame.style.right='0%';frame.style.height='700px';frame.style.width='750px'; frame.style.zIndex='100000'; document.body.appendChild(frame);var btn = document.createElement('button');btn.style.position='fixed';btn.style.top='5%';btn.style.right='760px';btn.style.zIndex='100001';btn.innerHTML='HIDE';btn.onclick=function(){frame.remove();btn.remove();};document.body.appendChild(btn);})();" class="action-link" style="background-color: #30d158; color: #000;">Drag to Bookmarks</a>
         </div>
 
-        <!-- Beta App 2 -->
+        <!-- Beta App 2: Main Proxy v2 Active Node -->
         <div class="card">
             <div>
                 <span class="badge">EXPERIMENTAL</span>
                 <h3>Network Proxy Mirror v2</h3>
-                <p>Testing fallback configurations for the UV Static routing nodes before deploying updates.</p>
+                <p>Launches the primary full-screen proxy matrix node running the UV Static 2.0 layout path on Netlify.</p>
             </div>
-            <a href="#" class="action-link">Test Node Connection</a>
+            <a href="https://netlify.app" target="_blank" class="action-link">Launch Proxy v2</a>
         </div>
 
-        <!-- Beta App 3 -->
+        <!-- Beta App 3: Active Vercel Backup Proxy Node -->
         <div class="card">
             <div>
-                <span class="badge">STAGING</span>
-                <h3>Staff Accounting Grid</h3>
-                <p>Testing manual math calculation matrices for tracking balances and interest parameters.</p>
+                <span class="badge backup">BETA BACKUP</span>
+                <h3>Proxy v2 Secondary Node</h3>
+                <p>Brand new backup proxy infrastructure running live on your custom Vercel deployment directory line.</p>
             </div>
-            <a href="#" class="action-link">Initialize Array</a>
+            <a href="https://prxyv2.vercel.app" target="_blank" class="action-link" style="background-color: #30d158;">Launch Backup v2</a>
         </div>
     </div>
 </div>
