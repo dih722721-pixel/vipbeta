@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIP Portal: Beta Matrix</title>
+    <title>Beta Hub Terminal</title>
     <style>
         body {
             background-color: #050507;
@@ -15,64 +15,28 @@
             flex-direction: column;
             align-items: center;
         }
-        
-        /* Gate System Style */
-        .gate-container {
-            width: 100%;
-            max-width: 450px;
-            background-color: #0a0a0f;
-            border: 2px solid #ff3b30;
-            border-radius: 6px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 0 25px rgba(255, 59, 48, 0.2);
-            margin-top: 50px;
-        }
-        .gate-container h2 { color: #ff3b30; margin-top: 0; text-transform: uppercase; font-size: 1.3em; letter-spacing: 1px; }
-        .gate-container p { color: #8e8e93; font-size: 0.85em; margin-bottom: 20px; }
-        .gate-input { background-color: #000; border: 1px solid #3a3a3c; color: #fff; padding: 10px; width: 80%; text-align: center; border-radius: 4px; font-family: 'Courier New', monospace; font-weight: bold; outline: none; text-transform: uppercase; letter-spacing: 2px; }
-        .gate-input:focus { border-color: #ff3b30; }
-        .gate-btn { background-color: #ff3b30; color: #fff; font-weight: bold; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin-top: 15px; font-family: 'Courier New', monospace; text-transform: uppercase; }
-        .gate-btn:hover { background-color: #e02e24; }
-        .gate-error { color: #ff3b30; font-size: 0.8em; margin-top: 10px; visibility: hidden; }
-
-        /* Hidden Master Hub Layout */
         .matrix-box {
-            display: none; /* Hidden until pass code is authorized */
             width: 100%;
             max-width: 850px;
             background-color: #0a0a0f;
-            border: 2px solid #30d158;
+            border: 2px solid #007aff;
             border-radius: 6px;
             padding: 25px;
-            box-shadow: 0 0 30px rgba(48, 209, 88, 0.2);
+            box-shadow: 0 0 30px rgba(0, 122, 255, 0.2);
             text-align: left;
         }
-        .matrix-box h1 {
-            color: #30d158;
+        h1 {
             font-size: 2em;
             margin-top: 0;
             text-transform: uppercase;
             letter-spacing: 2px;
-            border-bottom: 1px dashed #30d158;
+            border-bottom: 1px dashed #007aff;
             padding-bottom: 10px;
         }
         .status-line {
             color: #8e8e93;
             font-size: 0.9em;
             margin-bottom: 25px;
-        }
-        .terminal-stream {
-            background-color: #000000;
-            border: 1px solid #1c1c1e;
-            padding: 15px;
-            height: 120px;
-            overflow-y: auto;
-            color: #30d158;
-            font-size: 0.85em;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            border-radius: 4px;
         }
         .grid {
             display: grid;
@@ -88,14 +52,24 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        .card:hover { border-color: #30d158; }
-        .card h3 { margin-top: 0; color: #ffffff; font-size: 1.1em; }
-        .card p { color: #aeaeae; font-size: 0.85em; line-height: 1.4; margin-bottom: 15px; }
-        
+        .card:hover {
+            border-color: #007aff;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #ffffff;
+            font-size: 1.1em;
+        }
+        .card p {
+            color: #aeaeae;
+            font-size: 0.85em;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
         .action-link {
             display: block;
             text-align: center;
-            background-color: #30d158;
+            background-color: #007aff;
             color: #000000;
             padding: 10px;
             text-decoration: none;
@@ -103,108 +77,60 @@
             border-radius: 3px;
             font-size: 0.9em;
             transition: background 0.2s;
-            text-transform: uppercase;
         }
-        .action-link:hover { background-color: #24a142; }
-        .exclusive-badge { background-color: #ff3b30; color: white; font-size: 0.75em; padding: 2px 6px; border-radius: 3px; display: inline-block; margin-bottom: 10px; font-weight: bold; width: fit-content; }
+        .action-link:hover {
+            background-color: #1f8fff;
+        }
+        .badge {
+            background-color: #ff9f0a;
+            color: black;
+            font-size: 0.75em;
+            padding: 2px 6px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
-<!-- Step 1: Security Gate Interface -->
-<div class="gate-container" id="securityGate">
-    <h2>🛑 Secure System Entry</h2>
-    <p>Enter the authorized pass code to initialize the VIP after-school network dashboard.</p>
-    <input type="password" id="passCodeField" class="gate-input" placeholder="ACCESS CODE..." autocomplete="off">
-    <br>
-    <button class="gate-btn" onclick="verifyVipGate()">Authorize</button>
-    <div class="gate-error" id="gateErrorMsg">AUTHENTICATION FAILED: ACCESS DENIED</div>
-</div>
-
-<!-- Step 2: Hidden VIP Dashboard Frame -->
-<div class="matrix-box" id="vipDashboard">
-    <h1>👁️ VIP Portal: Secret Premium Hub</h1>
-    <div class="status-line">Clearance Tier: Verified VIP // After-School Session Active</div>
-
-    <!-- Active Loading Log Stream -->
-    <div class="terminal-stream" id="termStream">
-        [AUTH] VIP session authorized successfully...<br>
-        [DOM] Security cloak enabled. Routing matrix stabilized.<br>
-        [CONNECT] Active channel opened for nppsdmathcards...
-    </div>
+<div class="matrix-box">
+    <h1>🌀 Beta Testing Zone: Core Hub</h1>
+    <div class="status-line">Environment Matrix: Sandbox Active // Testing Tier Only</div>
 
     <div class="grid">
-        <!-- Module 01: Full-Screen Proxy -->
+        <!-- Beta App 1 -->
         <div class="card">
             <div>
-                <h3>Module 01: Proxy Node</h3>
-                <p>Launch the main full-screen proxy matrix bypassing layout boundaries and small screen errors.</p>
+                <span class="badge">BETA TEST</span>
+                <h3>Custom Secure Console</h3>
+                <p>Testing the hidden terminal system configurations (AICHAT, CALCAPP, MEMOPAD routing features).</p>
             </div>
-            <a href="https://netlify.app" target="_blank" class="action-link">Launch Proxy</a>
+            <a href="#" class="action-link">Launch Test Frame</a>
         </div>
 
-        <!-- Module 02: Gum Sample Desk -->
+        <!-- Beta App 2 -->
         <div class="card">
             <div>
-                <span class="exclusive-badge">VIP EXCLUSIVE</span>
-                <h3>Module 02: Gum Request</h3>
-                <p>Access the active flavor request pipeline running through the central inventory crate network.</p>
+                <span class="badge">EXPERIMENTAL</span>
+                <h3>Network Proxy Mirror v2</h3>
+                <p>Testing fallback configurations for the UV Static routing nodes before deploying updates.</p>
             </div>
-            <a href="https://google.com" target="_blank" class="action-link">Request Sample</a>
+            <a href="#" class="action-link">Test Node Connection</a>
+        </div>
+
+        <!-- Beta App 3 -->
+        <div class="card">
+            <div>
+                <span class="badge">STAGING</span>
+                <h3>Staff Accounting Grid</h3>
+                <p>Testing manual math calculation matrices for tracking balances and interest parameters.</p>
+            </div>
+            <a href="#" class="action-link">Initialize Array</a>
         </div>
     </div>
 </div>
-
-<script>
-    // Set your custom master gate code here
-    const MASTER_VIP_CODE = "BLACKMARKET";
-
-    function verifyVipGate() {
-        const inputField = document.getElementById('passCodeField');
-        const errorMsg = document.getElementById('gateErrorMsg');
-        const gateUI = document.getElementById('securityGate');
-        const dashboardUI = document.getElementById('vipDashboard');
-
-        if (inputField.value.trim().toUpperCase() === MASTER_VIP_CODE) {
-            // Hide gate and reveal the dashboard
-            gateUI.style.display = "none";
-            dashboardUI.style.display = "block";
-            
-            // Kick off terminal logs
-            initializeLogs();
-        } else {
-            errorMsg.style.visibility = "visible";
-            inputField.value = "";
-            inputField.focus();
-        }
-    }
-
-    // Allow pressing "Enter" key to submit
-    document.getElementById('passCodeField').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') verifyVipGate();
-    });
-
-    // Simulated terminal streams
-    function initializeLogs() {
-        const stream = document.getElementById('termStream');
-        const systemLogs = [
-            "[INFO] Clearing local variable cache directories...",
-            "[STEALTH] Cloaking network request parameters successfully.",
-            "[READY] Premium assets unblocked and standing by."
-        ];
-        let currentLog = 0;
-
-        function pushLog() {
-            if (currentLog < systemLogs.length) {
-                stream.innerHTML += `<br>${systemLogs[currentLog]}`;
-                stream.scrollTop = stream.scrollHeight;
-                currentLog++;
-                setTimeout(pushLog, 2000);
-            }
-        }
-        setTimeout(pushLog, 1500);
-    }
-</script>
 
 </body>
 </html>
